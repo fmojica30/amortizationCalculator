@@ -115,3 +115,18 @@ h2 {
   left: 40px;
   z-index: 1;
 }
+#amortTable {
+  display: grid;
+  max-width: 800px;
+  margin: auto;
+  margin-top: 2%;
+  grid-template-columns: repeat(5, 1fr);
+  background: #fff;
+  padding: 1%;
+  border-radius: 20px;
+  color: #5a5c5e;
+  align-items: center;
+  justify-items: center;
+  row-gap: 10px;
+  margin-top: 1%;
+}

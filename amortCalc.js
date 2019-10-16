@@ -55,6 +55,7 @@ function formatNums(n) {
       newChars.shift();
     }
     newChars = newChars.reverse();
+
     let newStr = "$";
     for (let i = 0; i < newChars.length; i++) {
       newStr += newChars[i];
@@ -76,7 +77,7 @@ function aTable(principal, pmt, r, m) {
 
   for (let i = 0; i < m; i++) {
     let outputs = [];
-
+    //calculating final payment baloon
     if (i === (m - 1)) {
       let month = i + 1;
       outputs.push(month.toString());
@@ -114,10 +115,41 @@ function aTable(principal, pmt, r, m) {
       t.push(outputs);
     }
   }
-  for (let i = 0; i < t.length; i++) {
-    console.log(t[i]);
+  return t;
+}
+
+// making the Amortization table output to html
+function outAmort(t) {
+  document.getElementById("amortTable").style.backgroundColor = "#fff";
+  //table schema is month [0]| payment [1]| interest Paid [2]| Principal paid [3]| principal Balance [4]
+  let target = document.getElementById("amortTable");
+  // Make the header row
+  let headerText = ["Month","Payment","Interest Paid","Principal Paid","Principal Balance"];
+  for (let i = 0; i < headerText.length; i++){
+    let tableCell = document.createElement("div");
+    tableCell.style.fontSize = "15px";
+    tableCell.style.fontWeight = "Bold";
+    target.appendChild(tableCell);
+    let elemText = document.createTextNode(headerText[i]);
+    tableCell.appendChild(elemText);
+  }
+  //make the text come out
+  for (let i = 0; i < t.length; i++){
+    for (let j = 0; j < t[i].length; j++) {
+      console.log(i);
+      let tableCell = document.createElement("div");
+      target.appendChild(tableCell);
+      let elemText = document.createTextNode(t[i][j]);
+      tableCell.appendChild(elemText);
+    }
   }
 }
+
+// Clearing out the amortization table for new input
+function clearAmort() {
+  document.getElementById("amortTable").innerHTML = "";
+}
+
 // clearing out calues input in the calculator
 function initialize() {
   document.getElementById("principal").value = "";
@@ -134,6 +166,7 @@ function setValues(m, t, s) {
 
 //initializing page when loaded
 initialize();
+document.getElementById("amortTable").style.backgroundColor = "transparent";
 
 //clearing elements on clear button press
 document.getElementById("clear").addEventListener("click", initialize);
@@ -160,6 +193,6 @@ document.getElementById("calc").addEventListener("click", function() {
   totalIntPush = formatNums(totalInt.toFixed(2));
 
   setValues(pmtPush, totalIntPush, sumPmtPush);
+  clearAmort();
+  outAmort(aTable(principal, pmt, intRate, termMonths));
 })
-
-aTable("100000","1887.12","5","60");
