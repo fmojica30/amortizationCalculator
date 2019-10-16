@@ -1,0 +1,117 @@
+body {
+  font-family: verdana;
+  background: #f1f5f8;
+}
+.boxes {
+  background: #fff;
+  padding: 1%;
+  border-radius: 20px;
+}
+.inputBox {
+  font-size: 15px;
+  border-top: none;
+  border-left: none;
+  border-right: none;
+  color: #5a5c5e;
+}
+.head {
+  display: grid;
+  color: #5a5c5e;
+  max-width: 800px;
+  margin: auto;
+  margin-top: 2%;
+  background: #fff;
+  padding: 1%;
+  border-radius: 20px;
+  align-items: cetner;
+  justify-items: center;
+}
+.input {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  max-width: 800px;
+  margin: auto;
+  margin-top: 1%;
+  grid-gap: 1em;
+  background: #fff;
+  padding: 1%;
+  border-radius: 20px;
+}
+.buttons {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  align-items: center;
+  justify-items: center;
+  grid-gap: 1em;
+}
+.output {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(2, 1fr);
+  max-width: 800px;
+  margin: auto;
+  margin-top: 1%;
+  grid-gap: 0.5em;
+  align-items: center;
+  justify-items: center;
+  background: #fff;
+  padding: 1%;
+  border-radius: 20px;
+}
+input {
+  width: 50%;
+  height: 20px;
+}
+button {
+  background: #24c179;
+  border: none;
+  height: 40px;
+  border-radius: 15px;
+  color: #fff;
+  font-size: 15px;
+  width: 50%;
+}
+button:hover {
+  background: #18794c;
+}
+button:active {
+  background: #24c179;
+}
+label {
+  color: #5a5c5e;
+}
+h3 {
+  color: #5a5c5e;
+}
+h2 {
+  color: #5a5c5e;
+  margin-top: 0px;
+}
+#principal {
+  font-size: 15px;
+  border-top: none;
+  border-left: none;
+  border-right: none;
+  color: #5a5c5e;
+}
+#loanTerm {
+  font-size: 15px;
+  border-top: none;
+  border-left: none;
+  border-right: none;
+  color: #5a5c5e;
+}
+#apy {
+  font-size: 15px;
+  border-top: none;
+  border-left: none;
+  border-right: none;
+  color: #5a5c5e;
+}
+#principal:before {
+  content: '$';
+  position: absolute;
+  top: 0;
+  left: 40px;
+  z-index: 1;
+}

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Mortgage calculator</title>
+    <link rel="stylesheet" href="/css/master.css">
+  </head>
+  <body>
+
+    <div class="head">
+      <h1>How much is your loan costing you?</h1>
+    </div>
+
+    <div class="input" id="input">
+      <label for="principal">Principal: </label>
+      <input type="text" name="principal" id="principal">
+
+      <label for="apy">Interest Rate: </label>
+      <input type="text" name="apy" id="apy">
+
+      <label for="loanTerm">Loan term in months: </label>
+      <input type="text" name="loanTerm" id="loanTerm">
+
+      <div class="buttons">
+        <button type="button" name="calc" id="calc">Calculate</button>
+        <button type="button" name="clear" id="clear">Clear</button>
+      </div>
+    </div>
+
+    <div class="output" id="output">
+      <h3>Monthly Payment</h3>
+
+      <h3>Total Interest Paid</h3>
+
+      <h3>Sum of all Payments</h3>
+
+      <h2 id="monthPmt"></h2>
+      <h2 id="totalInt"></h2>
+      <h2 id="sumPmts"></h2>
+    </div>
+    <script type="text/javascript" src="./hwk6.js"></script>
+  </body>
+</html>

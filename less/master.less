@@ -1,0 +1,126 @@
+//Variables
+@font-family: verdana;
+@backgroundColor: #f1f5f8;
+@primaryColor: #fff;
+@textColor: #5a5c5e;
+@buttonColor: #24c179;
+
+body {
+  font-family: @font-family;
+  background: @backgroundColor;
+}
+
+// mix ins
+.boxes {
+  background: @primaryColor;
+  padding: 1%;
+  border-radius: 20px;
+}
+
+.inputBox {
+  font-size: 15px;
+  border-top: none;
+  border-left: none;
+  border-right: none;
+  color: @textColor;
+}
+
+// css
+.head {
+  display:grid;
+  color: @textColor;
+  max-width: 800px;
+  margin: auto;
+  margin-top: 2%;
+  .boxes;
+  align-items: cetner;
+  justify-items: center;
+}
+
+.input {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  max-width: 800px;
+  margin: auto;
+  margin-top: 1%;
+  grid-gap: 1em;
+  .boxes;
+}
+
+.buttons {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  align-items: center;
+  justify-items: center;
+  grid-gap: 1em;
+}
+
+.output {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(2, 1fr);
+  max-width: 800px;
+  margin: auto;
+  margin-top: 1%;
+  grid-gap: .5em;
+  align-items: center;
+  justify-items: center;
+  .boxes;
+}
+
+input {
+  width: 50%;
+  height: 20px;
+}
+
+button {
+  background: #24c179;
+  border: none;
+  height: 40px;
+  border-radius: 15px;
+  color: @primaryColor;
+  font-size: 15px;
+  width: 50%;
+
+  &:hover {
+    background: #18794c;
+  }
+
+  &:active {
+    background: @buttonColor;
+  }
+}
+
+
+label {
+  color: @textColor;
+}
+
+h3 {
+  color: @textColor;
+}
+
+h2 {
+  color: @textColor;
+  margin-top: 0px;
+}
+
+#principal {
+  .inputBox;
+}
+
+#loanTerm {
+  .inputBox;
+}
+
+#apy {
+  .inputBox;
+}
+
+#principal:before {
+    content: '$';
+    position: absolute;
+    top: 0;
+    left: 40px;
+    z-index: 1;
+}
