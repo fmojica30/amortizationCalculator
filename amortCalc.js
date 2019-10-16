@@ -37,6 +37,7 @@ function calculateMonthlyPayments(p, r, m) {
   return pmt.toFixed(2)
 }
 
+//Formatting the numbers so they appear with correct commas
 function formatNums(n) {
   let subStrs = n.split(".");
   let cents = subStrs[1];
@@ -53,9 +54,8 @@ function formatNums(n) {
     if (newChars[0] === ",") {
       newChars.shift();
     }
-    console.log(newChars);
     newChars = newChars.reverse();
-    let newStr = "";
+    let newStr = "$";
     for (let i = 0; i < newChars.length; i++) {
       newStr += newChars[i];
     }
@@ -64,6 +64,59 @@ function formatNums(n) {
     return newStr;
   }
   return n;
+}
+
+// Creating the amortization table as a 2d list
+function aTable(principal, pmt, r, m) {
+  let t = [];
+  principal = Number(principal);
+  pmt = Number(pmt);
+  r = (Number(r) / 12) / 100;
+  m = Number(m);
+
+  for (let i = 0; i < m; i++) {
+    let outputs = [];
+
+    if (i === (m - 1)) {
+      let month = i + 1;
+      outputs.push(month.toString());
+
+      pmt = principal;
+      outputs.push(formatNums(pmt.toFixed(2)));
+
+      let interestPaid = principal * r;
+      outputs.push(formatNums(interestPaid.toFixed(2)));
+
+      let principalPaid = pmt - interestPaid;
+      outputs.push(formatNums(principalPaid.toFixed(2)));
+
+      let principalPostPayment = 0;
+      outputs.push(formatNums(principalPostPayment.toFixed(2)));
+
+      t.push(outputs);
+
+    } else {
+      let month = i + 1;
+      outputs.push(month.toString());
+
+      outputs.push(formatNums(pmt.toFixed(2)));
+
+      let interestPaid = principal * r;
+      outputs.push(formatNums(interestPaid.toFixed(2)));
+
+      let principalPaid = pmt - interestPaid;
+      outputs.push(formatNums(principalPaid.toFixed(2)));
+
+      let principalPostPayment = principal - principalPaid;
+      principal -= principalPaid;
+      outputs.push(formatNums(principalPostPayment.toFixed(2)));
+
+      t.push(outputs);
+    }
+  }
+  for (let i = 0; i < t.length; i++) {
+    console.log(t[i]);
+  }
 }
 // clearing out calues input in the calculator
 function initialize() {
@@ -102,9 +155,11 @@ document.getElementById("calc").addEventListener("click", function() {
   sumPmts = pmt * goodValues[2];
   totalInt = sumPmts - principal;
 
-  pmtPush = "$" + formatNums(pmt);
-  sumPmtPush = "$" + formatNums(sumPmts.toFixed(2));
-  totalIntPush = "$" + formatNums(totalInt.toFixed(2));
+  pmtPush = formatNums(pmt);
+  sumPmtPush = formatNums(sumPmts.toFixed(2));
+  totalIntPush = formatNums(totalInt.toFixed(2));
 
   setValues(pmtPush, totalIntPush, sumPmtPush);
 })
+
+aTable("100000","1887.12","5","60");
